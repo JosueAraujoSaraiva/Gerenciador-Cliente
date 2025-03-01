@@ -13,3 +13,11 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model Produto {
+  id_produto Int @id @default(autoincrement())
+  nome String
+  descricao String
+  preco Decimal
+  quantidadeEstoque Int
+}
+

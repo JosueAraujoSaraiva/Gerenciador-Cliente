@@ -26,7 +26,7 @@ model Cliente {
   nome String @db.VarChar(100)
   cpf Int 
   email String @unique
-  telefone Int
+  telefone String @db.VarChar(15)
   endereco String
 
   @@id([id_cliente, cpf])
@@ -36,4 +36,16 @@ model Venda {
   data DateTime
   valorTotal Decimal
 } 
+model Fornecedores {
+  id_fornecedor Int @default(autoincrement())
+  nome String
+  cnpj String @db.VarChar(14)
+  telefone String @db.VarChar(15)
+
+   @@id([id_fornecedor, cnpj])
+}
+model Estoque {
+  id_estoque Int @id @default(autoincrement())
+  quantAtual Int
+}
 

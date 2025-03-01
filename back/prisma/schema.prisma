@@ -31,3 +31,9 @@ model Cliente {
 
   @@id([id_cliente, cpf])
 }
+model Venda {
+  id_venda Int @id @default(autoincrement())
+  data DateTime
+  valorTotal Decimal
+} 
+

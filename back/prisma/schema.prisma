@@ -21,3 +21,13 @@ model Produto {
   quantidadeEstoque Int
 }
 
+model Cliente {
+  id_cliente Int @default(autoincrement())
+  nome String @db.VarChar(100)
+  cpf Int 
+  email String @unique
+  telefone Int
+  endereco String
+
+  @@id([id_cliente, cpf])
+}

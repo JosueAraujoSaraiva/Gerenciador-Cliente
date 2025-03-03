@@ -15,7 +15,7 @@ app.get('/cliente', async (req, res) => {
 
 
 // Rota para adicionar um novo cliente
-app.post('/Cliente', async (req, res) => {
+app.post('/cliente', async (req, res) => {
     const { nome, cpf, email, telefone, endereco } = req.body;
     try {
         const novoCliente = await prisma.Cliente.create({
@@ -29,32 +29,32 @@ app.post('/Cliente', async (req, res) => {
 });
 
 // Rota para atualizar um Pokémon
-app.put('/pokemons/:id', async (req, res) => {
+app.put('/cliente/:id', async (req, res) => {
     const { id } = req.params;
-    const { nome, tipo, raridade, preco, img_url } = req.body;
+    const { nome, cpf, email, telefone, endereco } = req.body;
     try {
-        const atualizado = await prisma.pokemon.update({
+        const atualizado = await prisma.cliente.update({
             where: { id: parseInt(id) },
-            data: { nome, tipo, raridade, preco, img_url }
+            data: { nome, cpf, email, telefone, endereco }
         });
         res.json(atualizado);
     } catch (e) {
         console.log(e);
-        res.status(500).json({ error: 'Erro ao atualizar Pokémon' });
+        res.status(500).json({ error: 'Erro ao atualizar cliente' });
     }
 });
 
 // Rota para deletar um Pokémon
-app.delete('/pokemons/:id', async (req, res) => {
+app.delete('/cliente/:id', async (req, res) => {
     const { id } = req.params;
     try {
-        const deletado = await prisma.pokemon.delete({
+        const deletado = await prisma.cliente.delete({
             where: { id: parseInt(id) }
         });
         res.json(deletado);
     } catch (e) {
         console.log(e);
-        res.status(500).json({ error: 'Erro ao deletar Pokémon' });
+        res.status(500).json({ error: 'Erro ao deletar cliente' });
     }
 });
 

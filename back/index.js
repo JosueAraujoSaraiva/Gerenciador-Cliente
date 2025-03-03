@@ -9,7 +9,7 @@ app.use(express.json());
 
 // Rota para listar todos os Cliente
 app.get('/cliente', async (req, res) => {
-    const cliente = await prisma.Cliente.findMany();
+    const cliente = await prisma.cliente.findMany();
     res.json(cliente);
 });
 
@@ -18,7 +18,7 @@ app.get('/cliente', async (req, res) => {
 app.post('/cliente', async (req, res) => {
     const { nome, cpf, email, telefone, endereco } = req.body;
     try {
-        const novoCliente = await prisma.Cliente.create({
+        const novoCliente = await prisma.cliente.create({
             data: { nome, cpf, email, telefone, endereco }
         });
         res.json(novoCliente);
@@ -34,7 +34,7 @@ app.put('/cliente/:id', async (req, res) => {
     const { nome, cpf, email, telefone, endereco } = req.body;
     try {
         const atualizado = await prisma.cliente.update({
-            where: { id: parseInt(id) },
+            where: { id_cliente: parseInt(id) },
             data: { nome, cpf, email, telefone, endereco }
         });
         res.json(atualizado);
@@ -49,7 +49,7 @@ app.delete('/cliente/:id', async (req, res) => {
     const { id } = req.params;
     try {
         const deletado = await prisma.cliente.delete({
-            where: { id: parseInt(id) }
+            where: { id_cliente: parseInt(id) }
         });
         res.json(deletado);
     } catch (e) {

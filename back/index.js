@@ -1,11 +1,15 @@
 const express = require('express');
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
+const cors = require('cors');
+
 
 const app = express();
 const port = 3000;
 
+
 app.use(express.json());
+app.use(cors())
 
 // Rota para listar todos os Cliente
 app.get('/cliente', async (req, res) => {

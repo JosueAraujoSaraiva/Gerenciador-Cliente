@@ -2,17 +2,22 @@ import React, { useEffect, useState } from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 import { FaUser, FaBox, FaTruck, FaUsers, FaChartBar, FaShoppingCart } from "react-icons/fa";
 import { getCliente } from './Api.js';
-import PokemonCard from './PokemonCard.jsx';
 import { useNavigate } from "react-router-dom";
 import { FaArrowLeft } from "react-icons/fa";
 import Stack from 'react-bootstrap/Stack';
+
+import PokemonCard from './PokemonCard.jsx';
 import Pesquisar from './componentes/Pesquisar.jsx';
+import ExcluirCliente from './componentes/ExcluirCliente.jsx';
 import './App.css'
 
-const PokemonList = () => {
+export default function ClienteLista() {
     const navigate = useNavigate();
     const [searchTerm, setSearchTerm] = useState(""); // Estado para o termo de pesquisa
     const [clientes, setClientes] = useState([]); // Lista de clientes
+    const [selectedClientes, setSelectedClientes] = useState([]);
+    
+
 
     useEffect(() => {
         fetchClientes();
@@ -23,10 +28,18 @@ const PokemonList = () => {
         setClientes(response);
     };
 
+
     // Filtrando clientes com base no nome digitado
     const clientesFiltrados = clientes.filter(cliente =>
         cliente.nome.toLowerCase().includes(searchTerm.toLowerCase())
     );
+
+    const handleSelect = (id) => {
+        setSelectedClientes((prev) =>
+            prev.includes(id) ? prev.filter(clienteId => clienteId !== id) : [...prev, id]
+        );
+    };
+
 
     return (
         <div className="container-fluid">
@@ -35,7 +48,7 @@ const PokemonList = () => {
                     <ul className="nav flex-column">
                         <li className="nav-item">
                             <a href="/cliente" className="nav-link text-white">
-                                <FaUser className="me-2" /> Adicionar Clientes
+                                <FaUser className="me-3" /> Adicionar Clientes
                             </a>
                         </li>
                         <li className="nav-item">
@@ -44,9 +57,8 @@ const PokemonList = () => {
                             </a>
                         </li>
                         <li className="nav-item">
-                            <a href="#" className="nav-link text-white">
-                                <FaTruck className="me-3" /> Excluir Cliente
-                            </a>
+                            <ExcluirCliente selectedClientes={selectedClientes} setClientes={setClientes}/>
+
                         </li>
                     </ul>
                     <button className="btn btn-light mb-3" onClick={() => navigate("/")}>
@@ -55,18 +67,28 @@ const PokemonList = () => {
                 </nav>
 
                 {/* Conteúdo Principal */}
-                <main className="col-md-9 ms-sm-auto col-lg-10 px-md-2 py-20 ">
+                <main className="col-md-9 ms-sm-auto col-lg-10 px-md-2 py-20 main-classe">
                     <Pesquisar setSearchTerm={setSearchTerm} /> {/* Passando a função para atualizar o termo de pesquisa */}
-                    <h2 className="mb-4 text-center">Lista Clientes</h2>
+                    <h2 className="mb-4 text-center lista-cliente">Lista de Clientes</h2>
+
                     <div className="card mb-2">
                         <Stack gap={3}>
                             <div className="p-2">
                                 {clientesFiltrados.length > 0 ? (
                                     clientesFiltrados.map(cliente => (
-                                        <PokemonCard key={cliente.id_cliente} cliente={cliente} />
+                                        <div key={cliente.id_cliente} className="d-flex align-items-center">
+                                            <input
+                                                type="checkbox"
+                                                className="me-2"
+                                                Schecked={selectedClientes.includes(cliente.id_cliente)}
+                                                onChange={() => handleSelect(cliente.id_cliente)}
+                                            />
+
+                                            <PokemonCard key={cliente.id_cliente} cliente={cliente} />
+                                        </div>
                                     ))
                                 ) : (
-                                    <p>Nenhum cliente encontrado.</p>
+                                    <p className='mb-4 text-center'>Nenhum cliente encontrado.</p>
                                 )}
                             </div>
                         </Stack>
@@ -77,4 +99,3 @@ const PokemonList = () => {
     );
 };
 
-export default PokemonList;

@@ -1,5 +1,4 @@
 import React from 'react';
-import Pesquisar from './componentes/Pesquisar.jsx';
 
 const PokemonCard = ({ cliente }) => {
    return (

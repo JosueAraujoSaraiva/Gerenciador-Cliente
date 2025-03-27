@@ -24,14 +24,6 @@
   width: 40px;
 }
 
-.editarCliente{
-  display: flex;
-  width:20px ;
-  justify-content: center;
-
-
-}
-
 .client-info {
   display: inline-flex;
   margin-right: auto;
@@ -41,19 +33,37 @@
   border-radius: 10px;
   border-width: 1px;
   gap: 20px;
- 
-  
 }
+.client-info p{
+  display: block;
+  width: 100px;
+}
+.client-info .id {
+  width: auto;
+}
+.client-info .nome {
+  width: 150px;
+}
+.client-info .cpf {
+  width: 110px;
+}
+.client-info .email {
+  width: 150px;
+}
+.client-info .endereco {
+  width: 200px;
+}
+
 .lista-cliente{
   margin-left: 200px;
 }
 
 .card {
- 
-  width: 100%;
-  max-width: 800px;
+  
+  width: 920px;
+  max-width: auto;
   padding: 10px;
-  margin-left: 140px;
+  margin-left: 100px;
   
   
 }
@@ -61,8 +71,4 @@
 .editar {
   margin-left: 400px;
   height:100vh ;
-}
-.editar input{
-  
-  
 }

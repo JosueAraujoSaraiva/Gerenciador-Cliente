@@ -19,7 +19,8 @@ export default function Pesquisar({ setSearchTerm }) {
                 flexDirection: { xs: "column", sm: "row" },
                 alignItems: "center",
                 justifyContent: "space-between",
-                marginLeft: '110px'
+                marginLeft: '70px',
+                
                
             }}>
                 <TextField
@@ -30,7 +31,7 @@ export default function Pesquisar({ setSearchTerm }) {
                     sx={{
                         flex: 1,
                         width: "800px",
-                        maxWidth: "800px",
+                        maxWidth: "930px",
                         borderRadius: "25px",
                         backgroundColor: "#fff",
                         boxShadow: "0px 3px 6px rgba(0,0,0,0.1)",

@@ -6,12 +6,12 @@ const PokemonCard = ({ cliente }) => {
 
          <div className="client-info">
            
-            <p><strong>ID:</strong> {cliente.id_cliente}</p>
-            <p><strong>Nome:</strong> {cliente.nome}</p>
-            <p><strong>Cpf:</strong> {cliente.cpf}</p>
-            <p><strong>email:</strong> {cliente.email}</p>
-            <p><strong>Telefone:</strong> {cliente.telefone}</p>
-            <p><strong>Endereço:</strong> {cliente.endereco}</p>
+            <p className='id'><strong>ID:</strong><br /> {cliente.id_cliente}</p>
+            <p className='nome'><strong>Nome:</strong><br /> {cliente.nome}</p>
+            <p className='cpf'><strong>Cpf:</strong><br /> {cliente.cpf}</p>
+            <p className='email'><strong>Email:</strong><br /> {cliente.email}</p>
+            <p className='telefone'><strong>Telefone:</strong><br /> {cliente.telefone}</p>
+            <p className='endereco'><strong>Endereço:</strong><br /> {cliente.endereco}</p>
         
 
          </div>

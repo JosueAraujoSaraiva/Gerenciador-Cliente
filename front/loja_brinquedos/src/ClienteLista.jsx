@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { FaUser, FaBox, FaArrowLeft } from "react-icons/fa";
+import { FaUser, FaHome, FaArrowLeft,FaEdit } from "react-icons/fa";
 import { getCliente } from "./Api.js";
 import Stack from "react-bootstrap/Stack";
 
@@ -58,12 +58,13 @@ export default function ClienteLista() {
                         </li>
                         <li className="nav-item">
                             <button className="nav-link text-white" onClick={handleEdit}>
-                                <FaBox className="me-3" /> Editar Cliente
+                                <FaEdit className="me-3" /> Editar Cliente
                             </button>
                         </li>
                     </ul>
                     <button className="btn btn-light mb-3" onClick={() => navigate("/")}>
-                        <FaArrowLeft className="me-2" /> Home
+                        
+                        <FaHome className="me-2" /> Home
                     </button>
                 </nav>
 

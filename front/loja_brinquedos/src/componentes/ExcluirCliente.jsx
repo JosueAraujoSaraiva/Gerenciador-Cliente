@@ -1,4 +1,4 @@
-import { FaTruck } from "react-icons/fa";
+import { FaTrash } from "react-icons/fa";
 import { deleteCliente } from "../Api.js"; // Verifique se o caminho está correto
 
 export default function ExcluirCliente({ selectedClientes, setClientes }) { // Props já fornecem os estados corretos
@@ -28,7 +28,7 @@ export default function ExcluirCliente({ selectedClientes, setClientes }) { // P
             className="nav-link text-white"
             onClick={deleteSelectedClientes}
         >
-            <FaTruck className="me-3" /> Excluir Cliente
+            <FaTrash className="me-3" /> Excluir Cliente
         </button>
     );
 }

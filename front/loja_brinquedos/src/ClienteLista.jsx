@@ -1,23 +1,20 @@
-import React, { useEffect, useState } from 'react';
-import "bootstrap/dist/css/bootstrap.min.css";
-import { FaUser, FaBox, FaTruck, FaUsers, FaChartBar, FaShoppingCart } from "react-icons/fa";
-import { getCliente } from './Api.js';
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { FaArrowLeft } from "react-icons/fa";
-import Stack from 'react-bootstrap/Stack';
+import "bootstrap/dist/css/bootstrap.min.css";
+import { FaUser, FaBox, FaArrowLeft } from "react-icons/fa";
+import { getCliente } from "./Api.js";
+import Stack from "react-bootstrap/Stack";
 
-import PokemonCard from './PokemonCard.jsx';
-import Pesquisar from './componentes/Pesquisar.jsx';
-import ExcluirCliente from './componentes/ExcluirCliente.jsx';
-import './App.css'
+import Pesquisar from "./componentes/Pesquisar.jsx";
+import ExcluirCliente from "./componentes/ExcluirCliente.jsx";
+import PokemonCard from "./PokemonCard.jsx";
+import "./App.css";
 
 export default function ClienteLista() {
     const navigate = useNavigate();
-    const [searchTerm, setSearchTerm] = useState(""); // Estado para o termo de pesquisa
-    const [clientes, setClientes] = useState([]); // Lista de clientes
-    const [selectedClientes, setSelectedClientes] = useState([]);
-    
-
+    const [searchTerm, setSearchTerm] = useState("");
+    const [clientes, setClientes] = useState([]);
+    const [selectedClientes, setSelectedClientes] = useState([]); 
 
     useEffect(() => {
         fetchClientes();
@@ -28,8 +25,6 @@ export default function ClienteLista() {
         setClientes(response);
     };
 
-
-    // Filtrando clientes com base no nome digitado
     const clientesFiltrados = clientes.filter(cliente =>
         cliente.nome.toLowerCase().includes(searchTerm.toLowerCase())
     );
@@ -40,11 +35,18 @@ export default function ClienteLista() {
         );
     };
 
+    const handleEdit = () => {
+        if (selectedClientes.length === 0) {
+            alert("Selecione um cliente para editar.");
+            return;
+        }
+        navigate(`/editar/${selectedClientes[0]}`); // Redireciona para a edição do primeiro cliente selecionado
+    };
 
     return (
         <div className="container-fluid">
             <div className="row">
-                <nav className='col-md-3 col-lg-2 d-md-block bg-dark sidebar text-white p-3'>
+                <nav className="col-md-3 col-lg-2 d-md-block bg-dark sidebar text-white p-3">
                     <ul className="nav flex-column">
                         <li className="nav-item">
                             <a href="/cliente" className="nav-link text-white">
@@ -52,13 +54,12 @@ export default function ClienteLista() {
                             </a>
                         </li>
                         <li className="nav-item">
-                            <a href="#" className="nav-link text-white">
-                                <FaBox className="me-3" /> Editar Cliente
-                            </a>
+                            <ExcluirCliente selectedClientes={selectedClientes} setClientes={setClientes} />
                         </li>
                         <li className="nav-item">
-                            <ExcluirCliente selectedClientes={selectedClientes} setClientes={setClientes}/>
-
+                            <button className="nav-link text-white" onClick={handleEdit}>
+                                <FaBox className="me-3" /> Editar Cliente
+                            </button>
                         </li>
                     </ul>
                     <button className="btn btn-light mb-3" onClick={() => navigate("/")}>
@@ -66,9 +67,8 @@ export default function ClienteLista() {
                     </button>
                 </nav>
 
-                {/* Conteúdo Principal */}
                 <main className="col-md-9 ms-sm-auto col-lg-10 px-md-2 py-20 main-classe">
-                    <Pesquisar setSearchTerm={setSearchTerm} /> {/* Passando a função para atualizar o termo de pesquisa */}
+                    <Pesquisar setSearchTerm={setSearchTerm} />
                     <h2 className="mb-4 text-center lista-cliente">Lista de Clientes</h2>
 
                     <div className="card mb-2">
@@ -80,15 +80,14 @@ export default function ClienteLista() {
                                             <input
                                                 type="checkbox"
                                                 className="me-2"
-                                                Schecked={selectedClientes.includes(cliente.id_cliente)}
+                                                checked={selectedClientes.includes(cliente.id_cliente)}
                                                 onChange={() => handleSelect(cliente.id_cliente)}
                                             />
-
-                                            <PokemonCard key={cliente.id_cliente} cliente={cliente} />
+                                            <PokemonCard cliente={cliente} />
                                         </div>
                                     ))
                                 ) : (
-                                    <p className='mb-4 text-center'>Nenhum cliente encontrado.</p>
+                                    <p className="mb-4 text-center">Nenhum cliente encontrado.</p>
                                 )}
                             </div>
                         </Stack>
@@ -97,5 +96,4 @@ export default function ClienteLista() {
             </div>
         </div>
     );
-};
-
+}

@@ -24,6 +24,13 @@
   width: 40px;
 }
 
+.editarCliente{
+  display: flex;
+  width:20px ;
+  justify-content: center;
+
+
+}
 
 .client-info {
   display: inline-flex;
@@ -47,6 +54,15 @@
   max-width: 800px;
   padding: 10px;
   margin-left: 140px;
+  
+  
+}
+
+.editar {
+  margin-left: 400px;
+  height:100vh ;
+}
+.editar input{
   
   
 }

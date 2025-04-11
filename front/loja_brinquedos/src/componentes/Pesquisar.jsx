@@ -19,7 +19,8 @@ export default function Pesquisar({ setSearchTerm }) {
                 flexDirection: { xs: "column", sm: "row" },
                 alignItems: "center",
                 justifyContent: "space-between",
-                marginLeft: '60px'
+                marginLeft: '70px',
+                
                
             }}>
                 <TextField
@@ -29,12 +30,13 @@ export default function Pesquisar({ setSearchTerm }) {
                     onChange={handleSearchChange} // Usando a função de mudança
                     sx={{
                         flex: 1,
-                        width: "200%",
-                        maxWidth: "800px",
+                        width: "800px",
+                        maxWidth: "930px",
                         borderRadius: "25px",
                         backgroundColor: "#fff",
                         boxShadow: "0px 3px 6px rgba(0,0,0,0.1)",
                         transition: "0.3s",
+
                         "& .MuiOutlinedInput-root": {
                             borderRadius: "25px",
                             "&:hover fieldset": { borderColor: "#ff6f61" },

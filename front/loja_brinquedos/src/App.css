@@ -12,9 +12,26 @@
   color: white;
   margin-right: 50px;
 }
+.sidebarList {
+  width: 160px; /* Definindo a largura fixa para o sidebar */
+  height: 100vh;
+  position: fixed;
+  background-color: #343a40; /* Cor do fundo do sidebar */
+  color: white;
+  margin-right: 50px;
+}
+
 .nav-item{
+  display: block;
   margin-top: 10px;
   margin-bottom: 10px;
+  width: 60px;
+  
+}
+.me-3{
+  width: 35px;
+  font-size: 20px;
+  align-items: center;
 }
 
 .client-info {
@@ -26,16 +43,43 @@
   border-radius: 10px;
   border-width: 1px;
   gap: 20px;
- 
-  
+}
+.client-info p{
+  display: block;
+  width: 100px;
+}
+.client-info .id {
+  width: auto;
+}
+.client-info .nome {
+  width: 150px;
+}
+.client-info .cpf {
+  width: 110px;
+}
+.client-info .email {
+  width: 150px;
+}
+.client-info .endereco {
+  width: 200px;
+}
+
+.lista-cliente{
+  margin-left: 200px;
 }
 
 .card {
- 
-  width: 100%;
+  
+  width: 920px;
   max-width: auto;
   padding: 10px;
-  margin-left: 80px;
+  margin-left: 100px;
   
   
 }
+
+.editar {
+  margin-left: 400px;
+  height:100vh ;
+}
+

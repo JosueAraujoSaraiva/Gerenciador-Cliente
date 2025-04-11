@@ -6,6 +6,7 @@ import './App.css'
 import PokemonList from './ClienteLista';
 import EditarCliente from './componentes/EditarCliente';
 import Inicio from './Inicio';
+import AdicionarCliente from './componentes/AdicionarCliente';
 
 const App = () => {
  return (
@@ -14,6 +15,7 @@ const App = () => {
     <Route path="/" element={< Inicio/>} />
     <Route path="/cliente" element={< PokemonList/>} />
     <Route path="/editar/:id" element={< EditarCliente/>} />
+    <Route path="/adicionar" element={< AdicionarCliente/>} />
 
    </Routes>
   </Router>

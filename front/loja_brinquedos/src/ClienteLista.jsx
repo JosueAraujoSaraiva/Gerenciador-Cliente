@@ -49,7 +49,7 @@ export default function ClienteLista() {
                 <nav className="col-md-3 col-lg-2 d-md-block bg-dark sidebar text-white p-3">
                     <ul className="nav flex-column">
                         <li className="nav-item">
-                            <a href="/cliente" className="nav-link text-white">
+                            <a href="/adicionar" className="nav-link text-white">
                                 <FaUser className="me-3" /> Adicionar Clientes
                             </a>
                         </li>
